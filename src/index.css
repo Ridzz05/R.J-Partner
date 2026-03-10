@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-neo-yellow: #ffe800;
+  --color-neo-pink: #ff007f;
+  --color-neo-cyan: #00e5ff;
+  --color-neo-green: #00ff00;
+  --color-neo-lavender: #b8b8ff;
+  --color-neo-blue: #2b00ff;
+
+  --font-sans: "Space Grotesk", "Outfit", sans-serif;
+
+  --shadow-brutal: 6px 6px 0px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px 0px #000000;
+  --shadow-brutal-sm: 4px 4px 0px 0px #000000;
+  --shadow-brutal-hover: 2px 2px 0px 0px #000000;
+  --shadow-brutal-active: 0px 0px 0px 0px #000000;
+}
+
+/* ===========================================================
+   Base
+   =========================================================== */
+body {
+  font-family: "Space Grotesk", "Outfit", sans-serif;
+  background-color: #f5f5f5;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #000;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #ff007f;
+  color: #fff;
+}
+
+/* ===========================================================
+   Marquee animation
+   =========================================================== */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+  display: inline-flex;
+}
