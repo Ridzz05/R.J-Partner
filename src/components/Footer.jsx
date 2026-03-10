@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PiInstagramLogoFill, PiTwitterLogoFill, PiLinkedinLogoFill, PiGithubLogoFill } from 'react-icons/pi';
-import { MdOutlineEmail } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io5';
+import { TbSend } from 'react-icons/tb';
 import logo from '../assets/logo.png';
 import { fadeUp, stagger, viewportOnce } from '../animations';
 
@@ -18,7 +19,34 @@ const FOOTER_LINKS = {
   Support: ['Kontak', 'FAQ', 'Syarat & Ketentuan', 'Kebijakan Privasi'],
 };
 
+const WA_NUMBER = '6282281862751';
+
 const Footer = () => {
+  const [form, setForm] = useState({ nama: '', email: '', deskripsi: '' });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const message =
+      `Halo R.J Partner! 👋\n\n` +
+      `*Nama:* ${form.nama}\n` +
+      `*Email:* ${form.email}\n` +
+      `*Kebutuhan:*\n${form.deskripsi}`;
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  };
+
+  const inputStyle = {
+    background: 'rgba(255,255,255,0.06)',
+    border: '1px solid rgba(255,255,255,0.12)',
+    color: '#fff',
+    outline: 'none',
+  };
+  const inputFocus = 'focus:border-purple-500/60 focus:ring-1 focus:ring-purple-500/30';
+
   return (
     <footer id="kontak" className="relative overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
       {/* Animated blobs */}
@@ -36,9 +64,9 @@ const Footer = () => {
       />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-28 relative z-10">
-        {/* Big CTA */}
+        {/* CTA + Contact Form */}
         <motion.div
-          className="glass rounded-3xl p-12 md:p-16 text-center mb-24 relative overflow-hidden"
+          className="glass rounded-3xl p-8 md:p-16 mb-24 relative overflow-hidden"
           style={{ border: '1px solid rgba(139,92,246,0.25)' }}
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,66 +76,111 @@ const Footer = () => {
           <div className="absolute inset-0 rounded-3xl opacity-5"
             style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }} />
 
-          <motion.p
-            className="text-sm font-semibold tracking-widest mb-4 relative z-10"
-            style={{ color: '#a78bfa' }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={viewportOnce}
-            transition={{ delay: 0.2 }}
-          >
-            READY TO GO DIGITAL?
-          </motion.p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+            {/* Left — text */}
+            <div>
+              <motion.p
+                className="text-sm font-semibold tracking-widest mb-4"
+                style={{ color: '#a78bfa' }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={viewportOnce}
+                transition={{ delay: 0.2 }}
+              >
+                HUBUNGI KAMI
+              </motion.p>
+              <motion.h2
+                className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
+                transition={{ delay: 0.3, duration: 0.7 }}
+              >
+                Yuk, <span className="gradient-text">Wujudkan Ide</span> Bersama Kami
+              </motion.h2>
+              <motion.p
+                className="text-white/55 text-base md:text-lg mb-8 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={viewportOnce}
+                transition={{ delay: 0.5 }}
+              >
+                Isi form di samping dan kami akan langsung terhubung via WhatsApp. Konsultasi gratis, tanpa biaya tersembunyi!
+              </motion.p>
 
-          <motion.h2
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 relative z-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOnce}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Yuk,{' '}
-            <span className="gradient-text">Wujudkan Ide</span>
-            <br />Bersama R.J Partner
-          </motion.h2>
+              <motion.div
+                className="flex items-center gap-3 text-white/50 text-sm"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={viewportOnce}
+                transition={{ delay: 0.6 }}
+              >
+                <IoLogoWhatsapp size={20} className="text-green-400" />
+                <span>Data form akan dikirim langsung ke WhatsApp kami</span>
+              </motion.div>
+            </div>
 
-          <motion.p
-            className="text-white/55 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={viewportOnce}
-            transition={{ delay: 0.5 }}
-          >
-            Konsultasi gratis, tanpa biaya tersembunyi. Ceritakan visumu dan kami akan wujudkan bersama.
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center relative z-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOnce}
-            transition={{ delay: 0.6 }}
-          >
-            <motion.a
-              href="mailto:hi@rjpartner.id"
-              className="gradient-btn text-white font-bold px-8 py-4 rounded-2xl text-lg flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.06, boxShadow: '0 20px 60px rgba(124,58,237,0.55)' }}
-              whileTap={{ scale: 0.97 }}
+            {/* Right — form */}
+            <motion.form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewportOnce}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <MdOutlineEmail size={22} /> Kirim Email
-            </motion.a>
-            <motion.a
-              href="https://wa.me/6282281862751"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold text-white/80 hover:text-white"
-              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
-              whileHover={{ background: 'rgba(255,255,255,0.13)', scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <IoLogoWhatsapp size={22} className="text-green-400" /> Chat WhatsApp
-            </motion.a>
-          </motion.div>
+              <div>
+                <label className="text-white/60 text-sm font-medium mb-1.5 block">Nama Lengkap</label>
+                <input
+                  type="text"
+                  name="nama"
+                  value={form.nama}
+                  onChange={handleChange}
+                  required
+                  placeholder="Masukkan nama kamu"
+                  className={`w-full px-4 py-3 rounded-xl text-sm placeholder-white/25 transition-all ${inputFocus}`}
+                  style={inputStyle}
+                />
+              </div>
+
+              <div>
+                <label className="text-white/60 text-sm font-medium mb-1.5 block">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="email@contoh.com"
+                  className={`w-full px-4 py-3 rounded-xl text-sm placeholder-white/25 transition-all ${inputFocus}`}
+                  style={inputStyle}
+                />
+              </div>
+
+              <div>
+                <label className="text-white/60 text-sm font-medium mb-1.5 block">Deskripsi Kebutuhan</label>
+                <textarea
+                  name="deskripsi"
+                  value={form.deskripsi}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  placeholder="Ceritakan kebutuhan proyek kamu..."
+                  className={`w-full px-4 py-3 rounded-xl text-sm placeholder-white/25 transition-all resize-none ${inputFocus}`}
+                  style={inputStyle}
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                className="gradient-btn text-white font-bold px-6 py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 mt-2 w-full"
+                whileHover={{ scale: 1.03, boxShadow: '0 16px 48px rgba(124,58,237,0.5)' }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <TbSend size={18} /> Kirim via WhatsApp
+              </motion.button>
+            </motion.form>
+          </div>
         </motion.div>
 
         {/* Footer grid */}

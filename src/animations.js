@@ -1,5 +1,3 @@
-// Shared Framer Motion variants for the landing page
-
 export const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {

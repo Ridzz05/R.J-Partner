@@ -92,7 +92,7 @@ const Pricing = () => {
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.id}
-              className={`glass rounded-3xl overflow-hidden flex flex-col relative ${plan.featured ? 'md:scale-[1.03] sm:col-span-2 md:col-span-1' : ''}`}
+              className={`glass rounded-3xl flex flex-col relative ${plan.featured ? 'md:scale-[1.03] sm:col-span-2 md:col-span-1' : ''}`}
               style={{ border: `1px solid ${plan.border}` }}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -100,19 +100,16 @@ const Pricing = () => {
               transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: plan.featured ? -4 : -6, transition: { duration: 0.25 } }}
             >
-              {/* Featured badge */}
-              {plan.badge && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                  <span className="text-xs font-bold px-4 py-1.5 rounded-full text-white flex items-center gap-1"
+              <div className="p-5 sm:p-8 pb-5 sm:pb-6 rounded-t-3xl" style={{ background: plan.gradient, opacity: plan.featured ? 1 : 0.7 }}>
+                {/* Featured badge */}
+                {plan.badge && (
+                  <span className="inline-flex items-center gap-1 text-xs font-bold px-4 py-1.5 rounded-full text-white mb-4"
                     style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
                     <HiLightningBolt size={12} className="fill-current" /> {plan.badge}
                   </span>
-                </div>
-              )}
-
-              <div className="p-5 sm:p-8 pb-5 sm:pb-6" style={{ background: plan.gradient, opacity: plan.featured ? 1 : 0.7 }}>
+                )}
                 <p className="text-xs sm:text-sm font-bold mb-2 sm:mb-3 tracking-wider" style={{ color: plan.color }}>{plan.name.toUpperCase()}</p>
-                <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white leading-tight mb-1 sm:mb-2 break-words">
+                <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white leading-tight mb-1 sm:mb-2">
                   {plan.priceRange}
                 </p>
                 <p className="text-white/55 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">{plan.tagline}</p>
