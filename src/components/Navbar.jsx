@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { TbBolt } from 'react-icons/tb';
+import logo from '../assets/logo.png';
 
 const NAV_LINKS = [
   { label: 'Layanan', href: '#layanan' },
@@ -43,12 +43,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.04 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}
-            >
-              <TbBolt size={20} color="white" strokeWidth={2.5} />
-            </div>
+            <img src={logo} alt="R.J Partner" className="h-9 w-auto rounded-xl border border-white/30" />
             <span className="font-extrabold text-xl tracking-tight text-white">
               R.J<span className="gradient-text"> Partner</span>
             </span>

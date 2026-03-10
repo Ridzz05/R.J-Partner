@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { PiInstagramLogoFill, PiTwitterLogoFill, PiLinkedinLogoFill, PiGithubLogoFill } from 'react-icons/pi';
 import { MdOutlineEmail } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io5';
-import { TbBolt } from 'react-icons/tb';
+import logo from '../assets/logo.png';
 import { fadeUp, stagger, viewportOnce } from '../animations';
 
 const SOCIAL = [
@@ -121,10 +121,7 @@ const Footer = () => {
           {/* Brand */}
           <motion.div variants={fadeUp}>
             <a href="#" className="flex items-center gap-2 mb-5">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
-                <TbBolt size={20} color="white" strokeWidth={2.5} />
-              </div>
+              <img src={logo} alt="R.J Partner" className="h-9 w-auto rounded-xl border border-white/30" />
               <span className="font-extrabold text-xl text-white">R.J<span className="gradient-text"> Partner</span></span>
             </a>
             <p className="text-white/45 text-sm leading-relaxed mb-6">
