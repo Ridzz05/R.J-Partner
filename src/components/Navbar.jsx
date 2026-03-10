@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import logo from '../assets/logo.png';
@@ -19,6 +19,17 @@ const Navbar = () => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleNav = useCallback((e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 350);
   }, []);
 
   return (
@@ -116,7 +127,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleNav(e, link.href)}
                 >
                   {link.label}
                 </motion.a>
@@ -125,7 +136,7 @@ const Navbar = () => {
                 href="#kontak"
                 className="gradient-btn text-white text-sm font-semibold px-5 py-3 rounded-xl text-center mt-2 block"
                 whileTap={{ scale: 0.96 }}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleNav(e, '#kontak')}
               >
                 Mulai Proyek ↗
               </motion.a>
