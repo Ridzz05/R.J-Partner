@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { HiArrowRight, HiStar, HiUsers } from 'react-icons/hi';
 import { TbWorldWww } from 'react-icons/tb';
-import { fadeUp, stagger, slideLeft, viewportOnce } from '../animations';
+import { fadeUp, stagger } from '../animations';
 
 const STATS = [
-  { value: '150+', label: 'Proyek Selesai' },
-  { value: '98%', label: 'Klien Puas' },
+  { value: '20+', label: 'Proyek Selesai' },
+  { value: '99%', label: 'Klien Puas' },
   { value: '5+', label: 'Tahun Pengalaman' },
 ];
 

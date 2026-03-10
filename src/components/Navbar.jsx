@@ -5,8 +5,9 @@ import { TbBolt } from 'react-icons/tb';
 
 const NAV_LINKS = [
   { label: 'Layanan', href: '#layanan' },
-  { label: 'Keunggulan', href: '#keunggulan' },
   { label: 'Portofolio', href: '#portofolio' },
+  { label: 'Keunggulan', href: '#keunggulan' },
+  { label: 'Harga', href: '#harga' },
   { label: 'Kontak', href: '#kontak' },
 ];
 
