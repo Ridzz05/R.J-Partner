@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#f4f4f4] text-black font-sans selection:bg-neo-pink selection:text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#03020d' }}>
       <Navbar />
       <main>
         <Hero />

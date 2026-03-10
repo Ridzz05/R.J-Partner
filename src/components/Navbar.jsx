@@ -1,68 +1,107 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Zap } from 'lucide-react';
+
+const NAV_LINKS = [
+  { label: 'Layanan', href: '#layanan' },
+  { label: 'Keunggulan', href: '#keunggulan' },
+  { label: 'Portofolio', href: '#portofolio' },
+  { label: 'Kontak', href: '#kontak' },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b-4 border-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled
+          ? 'rgba(3, 2, 13, 0.85)'
+          : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : 'none',
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex justify-between h-20 items-center">
+
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+          <a href="#" className="flex items-center gap-2 group">
             <div
-              className="bg-neo-yellow px-4 py-2 border-4 border-black font-black text-2xl tracking-tighter uppercase transform -rotate-2 hover:rotate-0 transition-transform cursor-pointer"
-              style={{ boxShadow: '4px 4px 0px 0px #000' }}
+              className="w-9 h-9 rounded-xl flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}
             >
-              AWBuilder
+              <Zap size={18} fill="white" color="white" />
             </div>
+            <span className="font-extrabold text-xl tracking-tight text-white">
+              AW<span className="gradient-text">Builder</span>
+            </span>
+          </a>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
-          <div className="hidden md:flex space-x-8 items-center font-bold text-lg">
-            <a href="#layanan" className="hover:text-neo-pink hover:underline decoration-4 underline-offset-4 transition-colors">Layanan</a>
-            <a href="#fitur" className="hover:text-neo-cyan hover:underline decoration-4 underline-offset-4 transition-colors">Fitur</a>
-            <a href="#harga" className="hover:text-neo-yellow hover:underline decoration-4 underline-offset-4 transition-colors">Harga</a>
-          </div>
-
-          <div className="hidden md:flex">
+          {/* CTA */}
+          <div className="hidden md:block">
             <a
               href="#kontak"
-              className="border-4 border-black px-6 py-3 font-black uppercase tracking-wider bg-neo-green hover:bg-neo-pink hover:text-white transition-all duration-150 inline-block"
-              style={{ boxShadow: '6px 6px 0px 0px #000' }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = '2px 2px 0px 0px #000'; e.currentTarget.style.transform = 'translate(4px, 4px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = '6px 6px 0px 0px #000'; e.currentTarget.style.transform = 'translate(0, 0)'; }}
+              className="gradient-btn text-white text-sm font-semibold px-5 py-2.5 rounded-xl inline-block"
             >
-              Konsultasi Gratis
+              Mulai Proyek ↗
             </a>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 border-4 border-black bg-neo-lavender"
-              style={{ boxShadow: '4px 4px 0px 0px #000' }}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* Mobile burger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-xl text-white/80 hover:text-white"
+            style={{ background: 'rgba(255,255,255,0.07)' }}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden border-t-4 border-black bg-white">
-          <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col font-bold text-xl">
-            <a href="#layanan" className="block px-3 py-2 border-2 border-transparent hover:border-black hover:bg-neo-yellow" onClick={() => setIsOpen(false)}>Layanan</a>
-            <a href="#fitur" className="block px-3 py-2 border-2 border-transparent hover:border-black hover:bg-neo-cyan" onClick={() => setIsOpen(false)}>Fitur</a>
-            <a href="#harga" className="block px-3 py-2 border-2 border-transparent hover:border-black hover:bg-neo-pink" onClick={() => setIsOpen(false)}>Harga</a>
+        <div
+          className="md:hidden mx-4 mb-4 rounded-2xl p-5 flex flex-col gap-4"
+          style={{ background: 'rgba(12, 11, 30, 0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.1)' }}
+        >
+          {NAV_LINKS.map((link) => (
             <a
-              href="#kontak"
-              className="block mt-4 border-4 border-black px-6 py-3 font-black uppercase tracking-wider bg-neo-green text-center"
-              style={{ boxShadow: '4px 4px 0px 0px #000' }}
+              key={link.href}
+              href={link.href}
+              className="text-white/80 hover:text-white font-medium py-1 transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Konsultasi Gratis
+              {link.label}
             </a>
-          </div>
+          ))}
+          <a
+            href="#kontak"
+            className="gradient-btn text-white text-sm font-semibold px-5 py-3 rounded-xl text-center mt-2 block"
+            onClick={() => setIsOpen(false)}
+          >
+            Mulai Proyek ↗
+          </a>
         </div>
       )}
     </nav>

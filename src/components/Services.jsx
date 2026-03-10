@@ -1,65 +1,115 @@
-import { Briefcase, ShoppingCart, Code } from 'lucide-react';
+import { Globe, Smartphone, Palette, ArrowRight, CheckCircle } from 'lucide-react';
 
 const SERVICES = [
   {
-    id: 1,
-    title: 'Company Profile',
-    description: 'Untuk validasi dan profesionalitas bisnis. Tampil meyakinkan di mata klien potensial.',
-    bg: '#ffe800',
-    textClass: 'text-black',
-    icon: <Briefcase size={44} strokeWidth={2.5} />,
+    id: 'web',
+    icon: <Globe size={28} />,
+    iconBg: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
+    label: 'Website Development',
+    tag: 'LAYANAN UTAMA',
+    tagColor: 'rgba(139,92,246,0.2)',
+    tagText: '#a78bfa',
+    description:
+      'Company profile, landing page, hingga sistem web kompleks. Kami bangun dengan performa tinggi, SEO-ready, dan desain yang bikin klienmu WOW.',
+    features: ['Company Profile', 'Landing Page', 'Web App & Dashboard', 'E-Commerce'],
+    accentColor: '#7c3aed',
+    span: 'lg:col-span-5',
   },
   {
-    id: 2,
-    title: 'E-Commerce / Toko Online',
-    description: 'Jualan otomatis 24/7 dengan payment gateway. Kelola produk & pesanan makin gampang.',
-    bg: '#ff007f',
-    textClass: 'text-white',
-    icon: <ShoppingCart size={44} strokeWidth={2.5} />,
+    id: 'app',
+    icon: <Smartphone size={28} />,
+    iconBg: 'linear-gradient(135deg, #f472b6, #a78bfa)',
+    label: 'Mobile App',
+    tag: 'ANDROID & IOS',
+    tagColor: 'rgba(244,114,182,0.2)',
+    tagText: '#f472b6',
+    description:
+      'Aplikasi mobile native & cross-platform yang smooth, intuitif, dan siap publish ke App Store maupun Google Play.',
+    features: ['Flutter & React Native', 'UI/UX Modern', 'API Integration', 'App Store Ready'],
+    accentColor: '#f472b6',
+    span: 'lg:col-span-4',
   },
   {
-    id: 3,
-    title: 'Custom Web App',
-    description: 'Sistem kompleks sesuai kebutuhan unik operasionalmu. Otomatisasi proses bisnis tanpa batas.',
-    bg: '#00e5ff',
-    textClass: 'text-black',
-    icon: <Code size={44} strokeWidth={2.5} />,
+    id: 'brand',
+    icon: <Palette size={28} />,
+    iconBg: 'linear-gradient(135deg, #34d399, #06b6d4)',
+    label: 'Branding Partner',
+    tag: 'IDENTITAS BRAND',
+    tagColor: 'rgba(52,211,153,0.2)',
+    tagText: '#34d399',
+    description:
+      'Dari logo, brand guideline, hingga social media kit. Kami jadi partner branding jangka panjang bisnis kamu.',
+    features: ['Logo & Visual Identity', 'Brand Guideline', 'Social Media Kit', 'Pitch Deck'],
+    accentColor: '#34d399',
+    span: 'lg:col-span-3',
   },
 ];
 
 const Services = () => {
   return (
-    <section id="layanan" className="py-24 bg-neo-lavender border-b-4 border-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="layanan" className="py-28 relative overflow-hidden">
+      {/* blob */}
+      <div className="blob w-[500px] h-[500px] top-0 right-[-150px] opacity-20"
+        style={{ background: 'radial-gradient(circle, #06b6d4, transparent)' }} />
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2
-            className="text-4xl md:text-6xl font-black uppercase tracking-tighter inline-block bg-white px-6 py-3 border-4 border-black transform rotate-1"
-            style={{ boxShadow: '6px 6px 0px 0px #000' }}
-          >
-            Pilih Kategori Website Kamu
+          <p className="text-sm font-semibold tracking-widest mb-4" style={{ color: '#a78bfa' }}>LAYANAN KAMI</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+            Solusi Digital{' '}
+            <span className="gradient-text">360°</span>
           </h2>
+          <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto">
+            Satu agensi, semua kebutuhan digital bisnis kamu terpenuhi.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {SERVICES.map((s) => (
             <div
               key={s.id}
-              className={`flex flex-col h-full border-4 border-black p-8 transition-all duration-150`}
-              style={{ backgroundColor: s.bg, boxShadow: '8px 8px 0px 0px #000' }}
+              className={`glass glass-hover p-8 flex flex-col ${s.span} group cursor-pointer`}
             >
-              <div className={`mb-4 ${s.textClass}`}>{s.icon}</div>
-              <h3 className={`text-2xl font-black uppercase mb-3 ${s.textClass}`}>{s.title}</h3>
-              <div className="w-full h-1 bg-black mb-4"></div>
-              <p className={`font-bold text-lg mb-8 flex-grow ${s.textClass}`}>{s.description}</p>
-              <button
-                className="border-4 border-black bg-white text-black px-6 py-3 font-black uppercase tracking-wider w-full flex justify-between items-center transition-all duration-150 hover:bg-black hover:text-white"
-                style={{ boxShadow: '4px 4px 0px 0px #000' }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = '1px 1px 0px 0px #000'; e.currentTarget.style.transform = 'translate(3px, 3px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = '4px 4px 0px 0px #000'; e.currentTarget.style.transform = 'translate(0, 0)'; }}
+              {/* Tag */}
+              <span
+                className="text-xs font-bold tracking-widest px-3 py-1 rounded-full self-start mb-5"
+                style={{ background: s.tagColor, color: s.tagText }}
               >
-                <span>Pesen Sekarang</span>
-                <span className="text-2xl font-serif font-bold">→</span>
-              </button>
+                {s.tag}
+              </span>
+
+              {/* Icon */}
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6"
+                style={{ background: s.iconBg }}
+              >
+                {s.icon}
+              </div>
+
+              {/* Content */}
+              <h3 className="text-2xl font-extrabold mb-3">{s.label}</h3>
+              <p className="text-white/55 text-sm leading-relaxed mb-6">{s.description}</p>
+
+              {/* Features list */}
+              <ul className="space-y-2 mb-8 flex-grow">
+                {s.features.map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-white/70">
+                    <CheckCircle size={14} style={{ color: s.accentColor, flexShrink: 0 }} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <a
+                href="#kontak"
+                className="flex items-center gap-2 text-sm font-semibold transition-all duration-200 group-hover:gap-3 mt-auto"
+                style={{ color: s.accentColor }}
+              >
+                Pelajari Lebih Lanjut <ArrowRight size={16} />
+              </a>
             </div>
           ))}
         </div>

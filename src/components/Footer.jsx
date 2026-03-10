@@ -1,68 +1,125 @@
-import { Instagram, Twitter, Linkedin, Github } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, Github, Mail, MessageCircle, Zap } from 'lucide-react';
 
 const SOCIAL = [
-  { icon: <Instagram size={24} />, label: 'Instagram', href: '#' },
-  { icon: <Twitter size={24} />, label: 'Twitter', href: '#' },
-  { icon: <Linkedin size={24} />, label: 'LinkedIn', href: '#' },
-  { icon: <Github size={24} />, label: 'GitHub', href: '#' },
+  { icon: <Instagram size={20} />, href: '#', label: 'Instagram' },
+  { icon: <Twitter size={20} />, href: '#', label: 'Twitter' },
+  { icon: <Linkedin size={20} />, href: '#', label: 'LinkedIn' },
+  { icon: <Github size={20} />, href: '#', label: 'GitHub' },
 ];
+
+const FOOTER_LINKS = {
+  Layanan: ['Website Development', 'Mobile App', 'Branding Partner', 'UI/UX Design'],
+  Perusahaan: ['Tentang Kami', 'Portofolio', 'Blog', 'Karir'],
+  Support: ['Kontak', 'FAQ', 'Syarat & Ketentuan', 'Kebijakan Privasi'],
+};
 
 const Footer = () => {
   return (
-    <footer id="kontak" className="bg-neo-blue text-white overflow-hidden relative">
-      {/* Decorative shapes */}
-      <div className="hidden md:block absolute top-[20%] left-[10%] w-32 h-32 bg-neo-yellow border-4 border-black z-0 transform rotate-[15deg]"></div>
-      <div className="hidden md:block absolute bottom-[10%] right-[15%] w-24 h-24 bg-neo-pink border-4 border-black rounded-full z-0 transform -rotate-12"></div>
+    <footer id="kontak" className="relative overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      {/* blobs */}
+      <div className="blob w-[500px] h-[500px] top-[-100px] right-[-100px] opacity-20"
+        style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }} />
+      <div className="blob w-[400px] h-[400px] bottom-0 left-[-100px] opacity-15"
+        style={{ background: 'radial-gradient(circle, #06b6d4, transparent)' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12 relative z-10">
+      {/* Big CTA Section */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-28 relative z-10">
+        <div
+          className="glass rounded-3xl p-12 md:p-16 text-center mb-24 relative overflow-hidden"
+          style={{ border: '1px solid rgba(139,92,246,0.25)' }}
+        >
+          {/* Inner glow */}
+          <div className="absolute inset-0 rounded-3xl opacity-5"
+            style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }} />
 
-        {/* Big CTA */}
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none mb-10 transform -rotate-2"
-            style={{ textShadow: '6px 6px 0px rgba(0,0,0,0.5)' }}
-          >
-            Siap Go Digital<br />Sekarang?
+          <p className="text-sm font-semibold tracking-widest mb-4 relative z-10" style={{ color: '#a78bfa' }}>
+            READY TO GO DIGITAL?
+          </p>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 relative z-10">
+            Yuk,{' '}
+            <span className="gradient-text">Wujudkan Ide</span>
+            <br />Bersama AWBuilder
           </h2>
-          <a
-            href="mailto:hi@awbuilder.id"
-            className="inline-block border-4 border-black px-12 py-6 font-black uppercase tracking-widest text-2xl md:text-4xl bg-neo-yellow text-black transition-all duration-150"
-            style={{ boxShadow: '12px 12px 0px 0px #000' }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = '4px 4px 0px 0px #000'; e.currentTarget.style.transform = 'translate(8px, 8px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = '12px 12px 0px 0px #000'; e.currentTarget.style.transform = 'translate(0, 0)'; }}
-          >
-            Hubungi Kami
-          </a>
-        </div>
-
-        {/* Footer bottom bar */}
-        <div className="border-t-4 border-black pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div
-            className="bg-white text-black px-4 py-2 border-4 border-black font-black text-2xl tracking-tighter uppercase transform rotate-2"
-            style={{ boxShadow: '4px 4px 0px 0px #000' }}
-          >
-            AWBuilder
-          </div>
-
-          <div className="flex space-x-4">
-            {SOCIAL.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="p-3 bg-white text-black border-4 border-black transition-all duration-150 hover:bg-neo-cyan"
-                style={{ boxShadow: '4px 4px 0px 0px #000' }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = '1px 1px 0px 0px #000'; e.currentTarget.style.transform = 'translate(3px, 3px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = '4px 4px 0px 0px #000'; e.currentTarget.style.transform = 'translate(0, 0)'; }}
-              >
-                {s.icon}
-              </a>
-            ))}
+          <p className="text-white/55 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
+            Konsultasi gratis, tanpa biaya tersembunyi. Ceritakan visumu dan kami akan wujudkan bersama.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+            <a
+              href="mailto:hi@awbuilder.id"
+              className="gradient-btn text-white font-bold px-8 py-4 rounded-2xl text-lg flex items-center justify-center gap-2"
+            >
+              <Mail size={20} /> Kirim Email
+            </a>
+            <a
+              href="https://wa.me/6281234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold text-white/80 hover:text-white transition-all"
+              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.07)'}
+            >
+              <MessageCircle size={20} /> Chat WhatsApp
+            </a>
           </div>
         </div>
 
-        <div className="text-center mt-16">
-          <p className="bg-black text-white px-4 py-2 inline-block font-bold uppercase tracking-wide">
-            © {new Date().getFullYear()} AWBuilder. All rights reserved.
+        {/* Footer Bottom */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          {/* Brand */}
+          <div>
+            <a href="#" className="flex items-center gap-2 mb-5">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
+                <Zap size={18} fill="white" color="white" />
+              </div>
+              <span className="font-extrabold text-xl text-white">AW<span className="gradient-text">Builder</span></span>
+            </a>
+            <p className="text-white/45 text-sm leading-relaxed mb-6">
+              Agensi digital full-service untuk Website, Mobile App, dan Branding bisnis kamu.
+            </p>
+            <div className="flex gap-3">
+              {SOCIAL.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white/60 hover:text-white transition-all"
+                  style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.2)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.4)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Links */}
+          {Object.entries(FOOTER_LINKS).map(([category, links]) => (
+            <div key={category}>
+              <h4 className="font-bold text-sm tracking-wide mb-5 text-white/90">{category}</h4>
+              <ul className="space-y-3">
+                {links.map((l) => (
+                  <li key={l}>
+                    <a href="#" className="text-sm text-white/45 hover:text-white/80 transition-colors">{l}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+        >
+          <p className="text-white/30 text-sm">
+            © {new Date().getFullYear()} AWBuilder. Semua hak dilindungi.
+          </p>
+          <p className="text-white/30 text-sm">
+            Dibuat dengan ❤️ di Indonesia
           </p>
         </div>
       </div>
