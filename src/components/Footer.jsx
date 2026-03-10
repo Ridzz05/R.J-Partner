@@ -97,7 +97,7 @@ const Footer = () => {
               <MdOutlineEmail size={22} /> Kirim Email
             </motion.a>
             <motion.a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6282281862751"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold text-white/80 hover:text-white"
