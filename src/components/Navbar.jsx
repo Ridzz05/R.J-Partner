@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { TbBolt } from 'react-icons/tb';
 
 const NAV_LINKS = [
   { label: 'Layanan', href: '#layanan' },
@@ -22,9 +23,7 @@ const Navbar = () => {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? 'rgba(3, 2, 13, 0.85)'
-          : 'transparent',
+        background: scrolled ? 'rgba(3, 2, 13, 0.85)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : 'none',
       }}
@@ -38,10 +37,10 @@ const Navbar = () => {
               className="w-9 h-9 rounded-xl flex items-center justify-center"
               style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}
             >
-              <Zap size={18} fill="white" color="white" />
+              <TbBolt size={20} color="white" strokeWidth={2.5} />
             </div>
             <span className="font-extrabold text-xl tracking-tight text-white">
-              AW<span className="gradient-text">Builder</span>
+              R.J<span className="gradient-text"> Partner</span>
             </span>
           </a>
 
@@ -60,10 +59,7 @@ const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <a
-              href="#kontak"
-              className="gradient-btn text-white text-sm font-semibold px-5 py-2.5 rounded-xl inline-block"
-            >
+            <a href="#kontak" className="gradient-btn text-white text-sm font-semibold px-5 py-2.5 rounded-xl inline-block">
               Mulai Proyek ↗
             </a>
           </div>
@@ -74,7 +70,7 @@ const Navbar = () => {
             className="md:hidden p-2 rounded-xl text-white/80 hover:text-white"
             style={{ background: 'rgba(255,255,255,0.07)' }}
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
           </button>
         </div>
       </div>
@@ -86,17 +82,14 @@ const Navbar = () => {
           style={{ background: 'rgba(12, 11, 30, 0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.1)' }}
         >
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <a key={link.href} href={link.href}
               className="text-white/80 hover:text-white font-medium py-1 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#kontak"
+          <a href="#kontak"
             className="gradient-btn text-white text-sm font-semibold px-5 py-3 rounded-xl text-center mt-2 block"
             onClick={() => setIsOpen(false)}
           >

@@ -1,10 +1,14 @@
-import { ArrowRight, Star, Users, Globe } from 'lucide-react';
+import { HiArrowRight, HiStar, HiUsers } from 'react-icons/hi';
+import { TbWorldWww, TbBrandGithub } from 'react-icons/tb';
+import { PiLightningFill } from 'react-icons/pi';
 
 const STATS = [
   { value: '150+', label: 'Proyek Selesai' },
   { value: '98%', label: 'Klien Puas' },
   { value: '5+', label: 'Tahun Pengalaman' },
 ];
+
+const TECH_TAGS = ['React', 'Next.js', 'Flutter', 'Node.js', 'Figma'];
 
 const Hero = () => {
   return (
@@ -21,7 +25,7 @@ const Hero = () => {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8"
           style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', color: '#a78bfa' }}>
-          <Star size={14} fill="currentColor" />
+          <HiStar className="fill-current" size={14} />
           Agensi Digital Terpercaya #1 di Indonesia
         </div>
 
@@ -39,7 +43,7 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mb-20">
           <a href="#kontak" className="gradient-btn text-white font-bold px-8 py-4 rounded-2xl text-lg flex items-center justify-center gap-2">
-            Mulai Proyek Sekarang <ArrowRight size={20} />
+            Mulai Proyek Sekarang <HiArrowRight size={20} />
           </a>
           <a
             href="#layanan"
@@ -62,13 +66,13 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Floating bento preview cards – decorative */}
-        <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[420px] space-y-3">
+        {/* Floating bento preview — desktop only */}
+        <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[400px] space-y-3">
           {/* Card 1 */}
           <div className="glass glass-hover p-5 animate-float" style={{ animationDelay: '0s' }}>
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7c3aed,#06b6d4)' }}>
-                <Globe size={16} color="white" />
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7c3aed,#06b6d4)' }}>
+                <TbWorldWww size={18} color="white" />
               </div>
               <span className="font-semibold text-sm">Website Development</span>
             </div>
@@ -81,8 +85,8 @@ const Hero = () => {
           {/* Card 2 */}
           <div className="glass glass-hover p-5 animate-float" style={{ animationDelay: '1.5s', marginLeft: '2rem' }}>
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#f472b6,#a78bfa)' }}>
-                <Users size={16} color="white" />
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#f472b6,#a78bfa)' }}>
+                <HiUsers size={18} color="white" />
               </div>
               <span className="font-semibold text-sm">Klien Aktif</span>
             </div>
@@ -93,7 +97,7 @@ const Hero = () => {
           <div className="glass glass-hover p-5 animate-float" style={{ animationDelay: '0.8s' }}>
             <p className="text-white/40 text-xs mb-2">Teknologi yang kami pakai</p>
             <div className="flex flex-wrap gap-2">
-              {['React', 'Next.js', 'Flutter', 'Node.js', 'Figma'].map(t => (
+              {TECH_TAGS.map(t => (
                 <span key={t} className="text-xs px-2.5 py-1 rounded-lg font-medium text-purple-300"
                   style={{ background: 'rgba(139,92,246,0.2)' }}>
                   {t}

@@ -1,9 +1,12 @@
-import { Globe, Smartphone, Palette, ArrowRight, CheckCircle } from 'lucide-react';
+import { HiCheckCircle, HiArrowRight } from 'react-icons/hi';
+import { TbWorldWww } from 'react-icons/tb';
+import { MdOutlinePhoneIphone } from 'react-icons/md';
+import { IoColorPaletteOutline } from 'react-icons/io5';
 
 const SERVICES = [
   {
     id: 'web',
-    icon: <Globe size={28} />,
+    icon: <TbWorldWww size={30} />,
     iconBg: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
     label: 'Website Development',
     tag: 'LAYANAN UTAMA',
@@ -12,12 +15,12 @@ const SERVICES = [
     description:
       'Company profile, landing page, hingga sistem web kompleks. Kami bangun dengan performa tinggi, SEO-ready, dan desain yang bikin klienmu WOW.',
     features: ['Company Profile', 'Landing Page', 'Web App & Dashboard', 'E-Commerce'],
-    accentColor: '#7c3aed',
+    accentColor: '#a78bfa',
     span: 'lg:col-span-5',
   },
   {
     id: 'app',
-    icon: <Smartphone size={28} />,
+    icon: <MdOutlinePhoneIphone size={30} />,
     iconBg: 'linear-gradient(135deg, #f472b6, #a78bfa)',
     label: 'Mobile App',
     tag: 'ANDROID & IOS',
@@ -31,7 +34,7 @@ const SERVICES = [
   },
   {
     id: 'brand',
-    icon: <Palette size={28} />,
+    icon: <IoColorPaletteOutline size={30} />,
     iconBg: 'linear-gradient(135deg, #34d399, #06b6d4)',
     label: 'Branding Partner',
     tag: 'IDENTITAS BRAND',
@@ -48,31 +51,26 @@ const SERVICES = [
 const Services = () => {
   return (
     <section id="layanan" className="py-28 relative overflow-hidden">
-      {/* blob */}
       <div className="blob w-[500px] h-[500px] top-0 right-[-150px] opacity-20"
         style={{ background: 'radial-gradient(circle, #06b6d4, transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest mb-4" style={{ color: '#a78bfa' }}>LAYANAN KAMI</p>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-            Solusi Digital{' '}
-            <span className="gradient-text">360°</span>
+            Solusi Digital <span className="gradient-text">360°</span>
           </h2>
           <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto">
             Satu agensi, semua kebutuhan digital bisnis kamu terpenuhi.
           </p>
         </div>
 
-        {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {SERVICES.map((s) => (
             <div
               key={s.id}
               className={`glass glass-hover p-8 flex flex-col ${s.span} group cursor-pointer`}
             >
-              {/* Tag */}
               <span
                 className="text-xs font-bold tracking-widest px-3 py-1 rounded-full self-start mb-5"
                 style={{ background: s.tagColor, color: s.tagText }}
@@ -80,7 +78,6 @@ const Services = () => {
                 {s.tag}
               </span>
 
-              {/* Icon */}
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6"
                 style={{ background: s.iconBg }}
@@ -88,27 +85,24 @@ const Services = () => {
                 {s.icon}
               </div>
 
-              {/* Content */}
               <h3 className="text-2xl font-extrabold mb-3">{s.label}</h3>
               <p className="text-white/55 text-sm leading-relaxed mb-6">{s.description}</p>
 
-              {/* Features list */}
               <ul className="space-y-2 mb-8 flex-grow">
                 {s.features.map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm text-white/70">
-                    <CheckCircle size={14} style={{ color: s.accentColor, flexShrink: 0 }} />
+                    <HiCheckCircle size={16} style={{ color: s.accentColor, flexShrink: 0 }} />
                     {f}
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
               <a
                 href="#kontak"
                 className="flex items-center gap-2 text-sm font-semibold transition-all duration-200 group-hover:gap-3 mt-auto"
                 style={{ color: s.accentColor }}
               >
-                Pelajari Lebih Lanjut <ArrowRight size={16} />
+                Pelajari Lebih Lanjut <HiArrowRight size={16} />
               </a>
             </div>
           ))}

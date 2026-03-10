@@ -1,10 +1,13 @@
-import { Instagram, Twitter, Linkedin, Github, Mail, MessageCircle, Zap } from 'lucide-react';
+import { PiInstagramLogoFill, PiTwitterLogoFill, PiLinkedinLogoFill, PiGithubLogoFill } from 'react-icons/pi';
+import { MdOutlineEmail } from 'react-icons/md';
+import { IoLogoWhatsapp } from 'react-icons/io5';
+import { TbBolt } from 'react-icons/tb';
 
 const SOCIAL = [
-  { icon: <Instagram size={20} />, href: '#', label: 'Instagram' },
-  { icon: <Twitter size={20} />, href: '#', label: 'Twitter' },
-  { icon: <Linkedin size={20} />, href: '#', label: 'LinkedIn' },
-  { icon: <Github size={20} />, href: '#', label: 'GitHub' },
+  { icon: <PiInstagramLogoFill size={20} />, href: '#', label: 'Instagram' },
+  { icon: <PiTwitterLogoFill size={20} />, href: '#', label: 'Twitter' },
+  { icon: <PiLinkedinLogoFill size={20} />, href: '#', label: 'LinkedIn' },
+  { icon: <PiGithubLogoFill size={20} />, href: '#', label: 'GitHub' },
 ];
 
 const FOOTER_LINKS = {
@@ -16,19 +19,17 @@ const FOOTER_LINKS = {
 const Footer = () => {
   return (
     <footer id="kontak" className="relative overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-      {/* blobs */}
       <div className="blob w-[500px] h-[500px] top-[-100px] right-[-100px] opacity-20"
         style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }} />
       <div className="blob w-[400px] h-[400px] bottom-0 left-[-100px] opacity-15"
         style={{ background: 'radial-gradient(circle, #06b6d4, transparent)' }} />
 
-      {/* Big CTA Section */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-28 relative z-10">
+        {/* Big CTA */}
         <div
           className="glass rounded-3xl p-12 md:p-16 text-center mb-24 relative overflow-hidden"
           style={{ border: '1px solid rgba(139,92,246,0.25)' }}
         >
-          {/* Inner glow */}
           <div className="absolute inset-0 rounded-3xl opacity-5"
             style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }} />
 
@@ -38,7 +39,7 @@ const Footer = () => {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 relative z-10">
             Yuk,{' '}
             <span className="gradient-text">Wujudkan Ide</span>
-            <br />Bersama AWBuilder
+            <br />Bersama R.J Partner
           </h2>
           <p className="text-white/55 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
             Konsultasi gratis, tanpa biaya tersembunyi. Ceritakan visumu dan kami akan wujudkan bersama.
@@ -48,7 +49,7 @@ const Footer = () => {
               href="mailto:hi@awbuilder.id"
               className="gradient-btn text-white font-bold px-8 py-4 rounded-2xl text-lg flex items-center justify-center gap-2"
             >
-              <Mail size={20} /> Kirim Email
+              <MdOutlineEmail size={22} /> Kirim Email
             </a>
             <a
               href="https://wa.me/6281234567890"
@@ -59,21 +60,21 @@ const Footer = () => {
               onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
               onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.07)'}
             >
-              <MessageCircle size={20} /> Chat WhatsApp
+              <IoLogoWhatsapp size={22} className="text-green-400" /> Chat WhatsApp
             </a>
           </div>
         </div>
 
-        {/* Footer Bottom */}
+        {/* Footer grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
             <a href="#" className="flex items-center gap-2 mb-5">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
-                <Zap size={18} fill="white" color="white" />
+                <TbBolt size={20} color="white" strokeWidth={2.5} />
               </div>
-              <span className="font-extrabold text-xl text-white">AW<span className="gradient-text">Builder</span></span>
+              <span className="font-extrabold text-xl text-white">R.J<span className="gradient-text"> Partner</span></span>
             </a>
             <p className="text-white/45 text-sm leading-relaxed mb-6">
               Agensi digital full-service untuk Website, Mobile App, dan Branding bisnis kamu.
@@ -95,7 +96,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Links  */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
               <h4 className="font-bold text-sm tracking-wide mb-5 text-white/90">{category}</h4>
@@ -115,12 +116,8 @@ const Footer = () => {
           className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8"
           style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
         >
-          <p className="text-white/30 text-sm">
-            © {new Date().getFullYear()} AWBuilder. Semua hak dilindungi.
-          </p>
-          <p className="text-white/30 text-sm">
-            Dibuat dengan ❤️ di Indonesia
-          </p>
+          <p className="text-white/30 text-sm">© {new Date().getFullYear()} R.J Partner. Semua hak dilindungi.</p>
+          <p className="text-white/30 text-sm">Dibuat dengan ❤️ di Indonesia</p>
         </div>
       </div>
     </footer>
