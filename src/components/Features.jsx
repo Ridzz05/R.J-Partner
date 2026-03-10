@@ -1,5 +1,5 @@
 import { TbSeo, TbDeviceMobileCode, TbBolt, TbShieldLock, TbChartInfographic, TbHeadset } from 'react-icons/tb';
-import { RiRocketLine } from 'react-icons/ri';
+
 
 const FEATURES = [
   {
