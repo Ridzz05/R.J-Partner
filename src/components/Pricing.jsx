@@ -1,73 +1,67 @@
 import { motion } from 'framer-motion';
-import { HiCheckCircle, HiArrowRight, HiLightningBolt } from 'react-icons/hi';
+import { HiCheckCircle, HiLightningBolt } from 'react-icons/hi';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { fadeUp, stagger, viewportOnce } from '../animations';
 
 const PLANS = [
   {
-    id: 'starter',
-    name: 'Starter',
+    id: 'basic',
+    name: 'Basic',
     tagline: 'Cocok untuk bisnis yang baru mulai go digital',
-    price: '3',
-    unit: 'jt',
-    suffix: '/ proyek',
+    priceRange: 'Rp 1.500.000 – Rp 3.000.000',
     color: '#22d3ee',
     gradient: 'linear-gradient(135deg, #164e63, #0c4a6e)',
     border: 'rgba(34,211,238,0.25)',
     features: [
-      'Landing Page 1 halaman',
-      'Desain responsif (mobile-friendly)',
-      'Form kontak & integrasi WhatsApp',
-      'SEO dasar',
-      'Gratis domain .com 1 tahun',
-      'Support 1 bulan',
+      'Desain Web Responsif & Profesional',
+      'Optimasi SEO On-Page Dasar',
+      'Halaman Inti (Home, About, Services, Contact)',
+      'Integrasi Google Maps & Form Kontak',
+      'Domain & Hosting 1 Tahun Pertama',
+      'Pelatihan Pengelolaan Konten (CMS)',
     ],
-    cta: 'Pesan Sekarang',
+    cta: 'Pilih Basic',
     featured: false,
   },
   {
-    id: 'pro',
-    name: 'Professional',
-    tagline: 'Solusi terlengkap untuk bisnis yang serius',
-    price: '8',
-    unit: 'jt',
-    suffix: '/ proyek',
+    id: 'advanced',
+    name: 'Advanced',
+    tagline: 'Solusi terlengkap untuk bisnis yang serius berkembang',
+    priceRange: 'Rp 4.000.000 – Rp 8.000.000',
     color: '#a78bfa',
     gradient: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
     border: 'rgba(139,92,246,0.5)',
     features: [
-      'Multi-halaman (hingga 10 halaman)',
-      'Admin dashboard & CMS',
-      'Integrasi payment gateway',
-      'SEO lanjutan + Google Analytics',
-      'Gratis domain & hosting 1 tahun',
-      'Support 3 bulan + revisi unlimited',
-      'Desain custom 100% original',
+      'Semua Fitur BASIC',
+      'Desain Kustom Eksklusif (Tanpa Template)',
+      'Optimasi SEO Lengkap & Strategi Konten',
+      'Sistem CRM / Pemesanan Sederhana',
+      'Layanan Input Konten Awal (1 Bulan)',
+      'Keamanan Lanjut & SSL Premium',
+      'Analitik & Pelaporan Google (Google Analytics)',
     ],
-    cta: 'Mulai Sekarang',
+    cta: 'Pilih Advanced',
     featured: true,
     badge: 'PALING POPULER',
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    tagline: 'Sistem kompleks sesuai kebutuhan unikmu',
-    price: 'Custom',
-    unit: '',
-    suffix: '',
+    id: 'premium',
+    name: 'Premium',
+    tagline: 'Sistem lengkap untuk skala enterprise & bisnis besar',
+    priceRange: 'Rp 10.000.000 – Rp 15.000.000',
     color: '#34d399',
     gradient: 'linear-gradient(135deg, #064e3b, #065f46)',
     border: 'rgba(52,211,153,0.25)',
     features: [
-      'Web App / Mobile App skala enterprise',
-      'Arsitektur sistem custom',
-      'Integrasi API & third-party services',
-      'Tim dedikasi (PM + Dev + Designer)',
-      'SLA & uptime guarantee',
-      'Support & maintenance ongoing',
-      'Training & handover dokumentasi',
+      'Semua Fitur ADVANCED',
+      'Pengembangan Backend & Frontend Khusus',
+      'Integrasi Gateway Pembayaran & Sistem Eksternal',
+      'Optimasi Kinerja Situs Tingkat Lanjut',
+      'Manajemen Konten Penuh (3 Bulan)',
+      'Konsultasi Branding Terintegrasi',
+      'Dedicated Project Manager & Dukungan Prioritas',
     ],
-    cta: 'Diskusi Kebutuhan',
+    cta: 'Pilih Premium',
     featured: false,
   },
 ];
@@ -94,11 +88,11 @@ const Pricing = () => {
         </motion.div>
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 items-stretch">
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.id}
-              className={`glass rounded-3xl overflow-hidden flex flex-col relative ${plan.featured ? 'scale-[1.03]' : ''}`}
+              className={`glass rounded-3xl overflow-hidden flex flex-col relative ${plan.featured ? 'md:scale-[1.03] sm:col-span-2 md:col-span-1' : ''}`}
               style={{ border: `1px solid ${plan.border}` }}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -116,30 +110,20 @@ const Pricing = () => {
                 </div>
               )}
 
-              {/* Card header */}
-              <div className="p-8 pb-6" style={{ background: plan.gradient, opacity: plan.featured ? 1 : 0.7 }}>
-                <p className="text-sm font-bold mb-1 opacity-80" style={{ color: plan.color }}>{plan.name.toUpperCase()}</p>
-                <div className="flex items-end gap-1 mb-2">
-                  {plan.price === 'Custom' ? (
-                    <span className="text-4xl font-extrabold text-white">Custom</span>
-                  ) : (
-                    <>
-                      <span className="text-white/60 text-lg font-semibold mb-1">Rp</span>
-                      <span className="text-5xl font-extrabold text-white">{plan.price}</span>
-                      <span className="text-white/60 font-semibold mb-1">{plan.unit}</span>
-                    </>
-                  )}
-                </div>
-                <p className="text-white/60 text-xs">{plan.suffix}</p>
-                <p className="text-white/55 text-sm mt-3 leading-relaxed">{plan.tagline}</p>
+              <div className="p-5 sm:p-8 pb-5 sm:pb-6" style={{ background: plan.gradient, opacity: plan.featured ? 1 : 0.7 }}>
+                <p className="text-xs sm:text-sm font-bold mb-2 sm:mb-3 tracking-wider" style={{ color: plan.color }}>{plan.name.toUpperCase()}</p>
+                <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white leading-tight mb-1 sm:mb-2 break-words">
+                  {plan.priceRange}
+                </p>
+                <p className="text-white/55 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">{plan.tagline}</p>
               </div>
 
               {/* Features */}
-              <div className="p-8 pt-6 flex flex-col flex-grow">
-                <ul className="space-y-3 flex-grow mb-8">
+              <div className="p-5 sm:p-8 pt-5 sm:pt-6 flex flex-col grow">
+                <ul className="space-y-3 grow mb-8">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm text-white/70">
-                      <HiCheckCircle size={17} className="flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
+                      <HiCheckCircle size={17} className="shrink-0 mt-0.5" style={{ color: plan.color }} />
                       {f}
                     </li>
                   ))}
@@ -171,7 +155,7 @@ const Pricing = () => {
           className="text-center text-white/35 text-sm mt-10"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={viewportOnce} transition={{ delay: 0.5 }}
         >
-          * Semua harga mulai dari, harga final bergantung pada kompleksitas proyek. Konsultasi gratis!
+          * Harga final bergantung pada kompleksitas dan scope proyek. Konsultasi gratis!
         </motion.p>
       </div>
     </section>
