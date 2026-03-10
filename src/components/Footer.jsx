@@ -3,7 +3,7 @@ import { PiInstagramLogoFill, PiTwitterLogoFill, PiLinkedinLogoFill, PiGithubLog
 import { MdOutlineEmail } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { TbBolt } from 'react-icons/tb';
-import { fadeUp, stagger, scaleIn, viewportOnce } from '../animations';
+import { fadeUp, stagger, viewportOnce } from '../animations';
 
 const SOCIAL = [
   { icon: <PiInstagramLogoFill size={20} />, href: '#', label: 'Instagram', hoverColor: '#e1306c' },
